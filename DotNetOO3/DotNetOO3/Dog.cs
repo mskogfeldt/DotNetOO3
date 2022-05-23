@@ -18,7 +18,16 @@ namespace DotNetOO3
         {
             Console.WriteLine("woff");
         }
-            
-        
+
+        public override string Stats()
+        {
+            return ("Name: " + name + " Weight: " + weight.ToString() + " Age: " + age.ToString() + isCute.ToString());
+        }
+
+        public string Fetch()
+        {
+            return ("Good doggy!");
+        }
+
     }
 }

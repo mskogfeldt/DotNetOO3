@@ -81,6 +81,11 @@ namespace DotNetOO3
         
         abstract public void DoSound();
 
+        public virtual string Stats()
+        {
+            return ("Name: " + name + " Weight: " + weight.ToString() + " Age: " + age.ToString());
+        }
+
     }
 
 

@@ -8,7 +8,7 @@ namespace DotNetOO3
 {
     internal class Horse : Animal
     {
-        public bool isfast = true;
+        public bool isFast = true;
 
         public Horse(int years, string firstName, int mass) : base(years, firstName, mass)
         {
@@ -17,6 +17,11 @@ namespace DotNetOO3
         public override void DoSound()
         {
             Console.WriteLine("gnaag");
+        }
+
+        public override string Stats()
+        {
+            return ("Name: " + name + " Weight: " + weight.ToString() + " Age: " + age.ToString() + isFast.ToString());
         }
     }
 }
