@@ -11,16 +11,44 @@ namespace Oovning5b
 
         public void PrintGreeting()
         {
-             Console.WriteLine("Wellcom to Garage Inc admin system");
+            Console.WriteLine("Wellcome to the Garage Inc admin system!");
         }
 
         public void PrintMainMenu()
         {
-            Console.WriteLine("Press 1 to add a new Garage: ");
-            Console.WriteLine("Press 2 to admin a Garage: ");
+            Console.WriteLine("Press 1 to search Garage: ");
+            Console.WriteLine("Press 2 to search for Vehicle");
+            // Console.WriteLine("Press 3 to add a new Garage: ");
+            //Console.WriteLine("Press 4 to add a new Vehicle: ");
             Console.WriteLine("Press 0 to quit the app: ");
         }
 
+       
+
+        public void PrintManageGarageMenu()
+        {
+            Console.WriteLine("Press 1 to add a new Garage: ");
+            Console.WriteLine("Press 2 to admin a Garage: ");
+            Console.WriteLine("Press 0 to go to main menu: ");
+        }
+
+        public void PrintAdinVehicleMenu(Vehicle vehicle)
+        {
+            Console.WriteLine("Press 1 to add a new Vehicle: ");
+            Console.WriteLine("Press 2 to admin a Vehicle: ");
+            Console.WriteLine("Press 0 to go to main menu: ");
+        }
+
+
+        public void PrintAddGarageNumberOfSpaces()
+        {
+            Console.WriteLine("Pleas Enter the numbber of spaces in this new bulding");
+        }
+
+
+        /*Console.WriteLine("Press 1 to park a Vehicle: ");
+            Console.WriteLine("Press 2 to unpark a Vehicle: ");*/
+        // 1 PrintMainMenu
         public int InputfromMenu(List<int> possibleChoices)
         {
             bool keepTyping = true;
@@ -36,9 +64,9 @@ namespace Oovning5b
                 catch (IndexOutOfRangeException) //If the input line is empty, we ask the users for some input.
                 {
                     Console.Clear();
-                    Console.WriteLine("Please enter some input!");
+                    Console.WriteLine("Please enter some valid input!");
                 }
-                if(Char.IsNumber(input) && possibleChoices.Contains(input))
+                if (Char.IsNumber(input) && possibleChoices.Contains(input))
                 {
                     return input;
                 }
@@ -46,6 +74,11 @@ namespace Oovning5b
             return -1;
         }
 
+   /*     PrintAdminGarageMenu
+            PrintAdinVehicleMenu
+            PrintAddGarageNumberOfSpaces*/
+
+            //
         public int InputNumberOfSpacesInNewGarage()
         {
             Console.WriteLine("Enter how many spaces there are in the new Garage");
@@ -59,8 +92,14 @@ namespace Oovning5b
 
         public string InputName(string argument)
         {
-            Console.WriteLine("Enter The name of the " + argument + ": ");
-            string name = Console.ReadLine();
+            bool keepTyping = true;
+            string name = "";
+            while (keepTyping)
+            {
+                Console.WriteLine("Enter The name of the " + argument + ": ");
+                name = Console.ReadLine();
+                if (name.Length > 0) keepTyping = false;
+            }
             return name;
         }
 
@@ -75,7 +114,9 @@ namespace Oovning5b
             {
                 return false;
             }
-                return false;
+            return false;
         }
+
+        
     }
 }

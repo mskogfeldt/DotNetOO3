@@ -15,17 +15,42 @@ namespace Oovning5b
 
         public void MainMenu()
         {
-            bool keepWorkin = true;
+            //bool keepWorkin = true;
             List<int> menuChoises = new List<int>() { 0, 1, 2 };
             userInterface.PrintMainMenu();
             int input = userInterface.InputfromMenu(menuChoises);
             if (input == 0) System.Environment.Exit(1);
-            else if (input == 1) Console.WriteLine("here be a method");
-            else Console.WriteLine("here be a method");
+            else if (input == 1) ManageGarageMenu();
+            else if (input == 2) ManageVehicleMenu();
+            else MainMenu();
 
         }
 
-        
+        public void ManageGarageMenu()
+        {
+            bool keepWorkin = true;
+            List<int> menuChoises = new List<int>() { 0, 1, 2 };
+            userInterface.PrintManageGarageMenu();
+            int input = userInterface.InputfromMenu(menuChoises);
+            if (input == 0) MainMenu();
+            else if (input == 1) ManageGarageMenu();
+            else if (input == 2) ;
+            else ManageGarageMenu();
+        }
+
+        public void ManageVehicleMenu()
+        {
+            bool keepWorkin = true;
+            List<int> menuChoises = new List<int>() { 0, 1, 2 };
+            userInterface.PrintManageGarageMenu();
+            int input = userInterface.InputfromMenu(menuChoises);
+            if (input == 0) MainMenu();
+            else if (input == 1) ManageGarageMenu();
+            else Console.WriteLine("here be a method");
+        }
+
+
+
     }
 }
 /*

@@ -8,20 +8,33 @@ namespace Oovning5b
 {
     internal class GarageService
     {
-        bool keepWorkin = true;
-        //public Dictionary<string, Vehicle> numberPlates = new Dictionary<string, Vehicle>();
+        //bool keepWorkin = true;
+        public Dictionary<string, Vehicle> numberPlates = new Dictionary<string, Vehicle>();
+        public Dictionary<string, Garage> garages = new Dictionary<string, Garage>();       
+        
         public void ProgramLoop()
         {
-            while (keepWorkin)
+           // while (keepWorkin)
             {
 
             }
         }
 
-        public void MainMenu()
+        public void AddGarage(int numberOfSpots, string name)
         {
-
+            Garage newGarage = new Garage(numberOfSpots, name);
+            garages.Add(name, newGarage);
         }
+
+        //public void AdminGarageMenu(string licensPlate, string garageName)
+        public void ParkVehicle(string registrationNumber, string garageName)
+        {
+            
+        }
+
+
+
+
 
     }
 }
