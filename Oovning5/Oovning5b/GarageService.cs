@@ -12,13 +12,7 @@ namespace Oovning5b
         public Dictionary<string, Vehicle> numberPlates = new Dictionary<string, Vehicle>();
         public Dictionary<string, Garage> garages = new Dictionary<string, Garage>();       
         
-        public void ProgramLoop()
-        {
-           // while (keepWorkin)
-            {
-
-            }
-        }
+        
 
         public void AddGarage(int numberOfSpots, string name)
         {
@@ -27,9 +21,14 @@ namespace Oovning5b
         }
 
         //public void AdminGarageMenu(string licensPlate, string garageName)
-        public void ParkVehicle(string registrationNumber, string garageName)
+        public void ParkVehicle(Vehicle vehicle, Garage garage)
         {
-            
+             //garage.Par
+        }
+
+        public void UnParkVehicle(string registrationNumber, string garageName)
+        {
+
         }
 
 

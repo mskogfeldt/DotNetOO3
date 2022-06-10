@@ -13,7 +13,7 @@ namespace Oovning5b
         {
             Console.WriteLine("Wellcome to the Garage Inc admin system!");
         }
-
+        //1
         public void PrintMainMenu()
         {
             Console.WriteLine("Press 1 to search Garage: ");
@@ -24,7 +24,7 @@ namespace Oovning5b
         }
 
        
-
+        //2a
         public void PrintManageGarageMenu()
         {
             Console.WriteLine("Press 1 to add a new Garage: ");
@@ -32,18 +32,41 @@ namespace Oovning5b
             Console.WriteLine("Press 0 to go to main menu: ");
         }
 
-        public void PrintAdinVehicleMenu(Vehicle vehicle)
+        //2b
+        public void PrintManageVehicleMenu()
         {
             Console.WriteLine("Press 1 to add a new Vehicle: ");
             Console.WriteLine("Press 2 to admin a Vehicle: ");
             Console.WriteLine("Press 0 to go to main menu: ");
         }
 
-
+        //2a1a
         public void PrintAddGarageNumberOfSpaces()
         {
             Console.WriteLine("Pleas Enter the numbber of spaces in this new bulding");
+            Console.WriteLine("Press 0 to go to Manage Garage");
         }
+
+        //2a1b
+        public void PrintAddGarageName()
+        {
+            Console.WriteLine("Please Enter the name for this new bulding");
+            Console.WriteLine("Press 0 to go to Manage Garage");
+        }
+
+        //2b2a 
+        public void PrintAddVehicleType()
+        {
+            Console.WriteLine("To add a Airplane Press 1");
+            Console.WriteLine("To add a Boat Press 2");
+            Console.WriteLine("To add a bus Press 3");
+            Console.WriteLine("To add a Car Press 4");
+            Console.WriteLine("To add a Motorcycle Press 5");
+            Console.WriteLine("Press 0 to go to Manage Vehicle");
+        }
+
+
+        
 
 
         /*Console.WriteLine("Press 1 to park a Vehicle: ");
@@ -96,9 +119,10 @@ namespace Oovning5b
             string name = "";
             while (keepTyping)
             {
-                Console.WriteLine("Enter The name of the " + argument + ": ");
+                Console.WriteLine("Enter " + argument + " . At Least to chars long");
+                Console.WriteLine("Enter 0 to go back");
                 name = Console.ReadLine();
-                if (name.Length > 0) keepTyping = false;
+                if (name.Length > 1 || name == "0") keepTyping = false;
             }
             return name;
         }
@@ -115,6 +139,16 @@ namespace Oovning5b
                 return false;
             }
             return false;
+        }
+
+        public void Message(string message)
+        {
+            Console.WriteLine(message);
+        }
+
+        public void Sucess(string message)
+        {
+            Console.WriteLine("Sucess" + message);
         }
 
         

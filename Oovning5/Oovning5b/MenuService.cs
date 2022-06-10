@@ -9,7 +9,7 @@ namespace Oovning5b
     internal class MenuService
     {
 
-        private enum InputState { MainMenu, AdingGarage, ManagingGarage }
+        
         Oovning5b.UserInterface userInterface = new Oovning5b.UserInterface();
         Oovning5b.GarageService garageService = new Oovning5b.GarageService();
 
@@ -28,7 +28,7 @@ namespace Oovning5b
 
         public void ManageGarageMenu()
         {
-            bool keepWorkin = true;
+            //bool keepWorkin = true;
             List<int> menuChoises = new List<int>() { 0, 1, 2 };
             userInterface.PrintManageGarageMenu();
             int input = userInterface.InputfromMenu(menuChoises);
@@ -40,17 +40,50 @@ namespace Oovning5b
 
         public void ManageVehicleMenu()
         {
-            bool keepWorkin = true;
+            //bool keepWorkin = true;
             List<int> menuChoises = new List<int>() { 0, 1, 2 };
-            userInterface.PrintManageGarageMenu();
+            userInterface.PrintManageVehicleMenu();
             int input = userInterface.InputfromMenu(menuChoises);
             if (input == 0) MainMenu();
             else if (input == 1) ManageGarageMenu();
-            else Console.WriteLine("here be a method");
+
+            else ManageVehicleMenu();
         }
 
+        public void AddGarageMenu()
+        {
+            List<int> menuChoises = new List<int>() { 0, 1, 2 };
+            //userInterface.PrintAddGarageName();
+            string instructions = "The new garages name";
+            string garageName = userInterface.InputName(instructions);
+            int numberOfParkingSlots;
 
+            if (garageName == "0") ManageGarageMenu();
+            else
+            {
+                numberOfParkingSlots = userInterface.InputNumberOfSpacesInNewGarage();
+                Garage garage = new Garage(numberOfParkingSlots, garageName);
+                try
+                {
+                    garageService.garages.Add(garageName, garage);
+                    userInterface.Message("Garage added");
+                }
+                catch
+                {
+                    userInterface.Message("Your skilled coWorkers har already added said garage");
+                } 
+            }
+        }
 
+        public void AddCarMenu()
+        {
+
+        }
+
+      /*  public Garage GetGarageByname(string name)
+        {
+
+        }*/
     }
 }
 /*

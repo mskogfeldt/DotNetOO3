@@ -11,6 +11,7 @@ namespace Oovning5b
         public string RegistrationNumber { get; set; }
         public string Color { get; set; }
         public int Wheels { get; set; }
+        public string? GarageName { get; set; }      
 
         
 
