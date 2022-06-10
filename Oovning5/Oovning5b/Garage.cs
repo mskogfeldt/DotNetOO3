@@ -6,11 +6,13 @@ using System.Threading.Tasks;
 
 namespace Oovning5b
 {
+    
     internal class Garage//<T>:IEnumerable<T> where T : class
     {
         //public  Enumerator  GetEnumerator();
-        string Name { get; set; }
-        int Size { get; set; }
+        private Oovning5b.UserInterface userInterface = new Oovning5b.UserInterface();
+        public string Name { get; set; }
+        private int Size { get; set; }
         private Vehicle[] parkedVehicles;
 
         public Garage(int numberOfSpots, string name)
@@ -22,16 +24,24 @@ namespace Oovning5b
 
         public void ParkVehicle(Vehicle vehicle)
         {
-            if(this.parkedVehicles.Length < Size - 1)
+            if (this.parkedVehicles.Length < Size - 1)
             {
                 Array.Resize(ref parkedVehicles, parkedVehicles.Length + 1);
                 parkedVehicles[parkedVehicles.Length] = vehicle;
+                vehicle.GarageName = this.Name;
             }
+            else 
+            {
+                string message = "Garage isd full, keep driving";
+                userInterface.Message(message);
+            }
+            
         }
 
         public void UnParkVehicle(Vehicle vehicle)
         {
             parkedVehicles = parkedVehicles.Where(val => val != vehicle).ToArray();
+            vehicle.GarageName = null;
         }
 
        

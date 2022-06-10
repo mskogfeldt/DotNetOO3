@@ -8,8 +8,6 @@ namespace Oovning5b
 {
     internal class MenuService
     {
-
-        
         Oovning5b.UserInterface userInterface = new Oovning5b.UserInterface();
         Oovning5b.GarageService garageService = new Oovning5b.GarageService();
 
