@@ -8,8 +8,10 @@ namespace Oovning5b
 {
     internal class MenuService
     {
-        Oovning5b.UserInterface userInterface = new Oovning5b.UserInterface();
-        Oovning5b.GarageService garageService = new Oovning5b.GarageService();
+        Oovning5b.UserInterface userInterface = new UserInterface();
+        Oovning5b.GarageService garageService = new GarageService();
+        Oovning5b.NumberPlateManager numberPlateManager = new NumberPlateManager();
+
 
         public void MainMenu()
         {
@@ -31,8 +33,8 @@ namespace Oovning5b
             userInterface.PrintManageGarageMenu();
             int input = userInterface.InputfromMenu(menuChoises);
             if (input == 0) MainMenu();
-            else if (input == 1) ManageGarageMenu();
-            else if (input == 2) ;
+            else if (input == 1) AddGarageMenu();
+            else if (input == 2) ParkVehicleMenu();
             else ManageGarageMenu();
         }
 
@@ -43,8 +45,9 @@ namespace Oovning5b
             userInterface.PrintManageVehicleMenu();
             int input = userInterface.InputfromMenu(menuChoises);
             if (input == 0) MainMenu();
-            else if (input == 1) ManageGarageMenu();
-
+            else if (input == 1) AddVehicleTypeMenu();
+            else if (input == 2) ParkVehicleMenu();//// else if (input == 2) garageService.ParkVehicle() then ManageVehicleMenu()
+            //else if (input == 3) garageService.UnparkVehicle() then ManageVehicleMenu()
             else ManageVehicleMenu();
         }
 
@@ -60,7 +63,7 @@ namespace Oovning5b
             else
             {
                 numberOfParkingSlots = userInterface.InputNumberOfSpacesInNewGarage();
-                Garage garage = new Garage(numberOfParkingSlots, garageName);
+                var garage = new Garage<Vehicle>(numberOfParkingSlots, garageName);
                 try
                 {
                     garageService.garages.Add(garageName, garage);
@@ -69,19 +72,35 @@ namespace Oovning5b
                 catch
                 {
                     userInterface.Message("Your skilled coWorkers har already added said garage");
-                } 
+                }
             }
         }
 
-        public void AddCarMenu()
+        public void AddVehicleTypeMenu()
         {
+            userInterface.PrintAddVehicleType();
+            List<int> possibleSellections = new List<int>() { 0, 1, 2, 3, 4, 5 };
+            int menuSelection = userInterface.InputfromMenu(possibleSellections);
+            if (menuSelection == 0) ManageVehicleMenu();
+            else if (menuSelection == 1) ManageVehicleMenu();
+            // sfter adding calling methd AddVehicleTypeMenu again?
+            else if (menuSelection == 2) ManageVehicleMenu();
+            else if (menuSelection == 3) ManageVehicleMenu();
+            else if (menuSelection == 4) ManageVehicleMenu();
+            else if (menuSelection == 5) ManageVehicleMenu();
+        }
+
+        public void ParkVehicleMenu()
+        {
+
 
         }
 
-      /*  public Garage GetGarageByname(string name)
+        public void UnparkVhicleMenu()
         {
 
-        }*/
+        }
+        
     }
 }
 /*
