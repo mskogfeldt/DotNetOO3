@@ -68,11 +68,9 @@ namespace Oovning5b
             return garages[regno].Any(v => v.RegistrationNumber == regno);
         }
 
-        public List<string> GarageNames()
+        public void GarageNames()
         {
-            List<string> garageNames = new List<string>();
-            foreach (var garage in garages) garageNames.Add(garage.Key);
-            return garageNames;
+            foreach (var garage in garages) userInterface.Message(garage.Key);
         }
 
     }

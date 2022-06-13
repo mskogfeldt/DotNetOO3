@@ -104,27 +104,41 @@ namespace Oovning5b
             PrintAddGarageNumberOfSpaces*/
 
             //
-        public int InputNumberOfSpacesInNewGarage()
+        public int InputNumber(string message)
         {
-            Console.WriteLine("Enter how many spaces there are in the new Garage");
-            string spacees = Console.ReadLine();
-            if (IsItAnInt(spacees))
+            bool keepTyping = true;
+            string numb;
+            while (keepTyping)
             {
-                return Int32.Parse(spacees);
+                Console.WriteLine(message);
+                numb = Console.ReadLine();
+                if (numb != null)
+                {
+                    if (IsItAnInt(numb))
+                    {
+                        // keepTyping = false;
+                        return Int32.Parse(numb);
+                    }
+                }
+                else Console.WriteLine("This is not correct input");
             }
-            else return -1;
+
+            return -1;
         }
 
-        public string InputName(string argument)
+        public string InputSomething(string argument)
         {
             bool keepTyping = true;
             string name = "";
             while (keepTyping)
             {
-                Console.WriteLine("Enter " + argument + " . At Least to chars long");
+                Console.WriteLine("Enter " + argument + " . At Least two chars long");
                 Console.WriteLine("Enter 0 to go back");
                 name = Console.ReadLine();
-                if (name.Length > 1 || name == "0") keepTyping = false;
+                if (name != null)
+                {
+                    if (name.Length > 1 || name == "0") keepTyping = false;
+                }
             }
             return name;
         }

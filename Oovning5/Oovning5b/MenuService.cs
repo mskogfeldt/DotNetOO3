@@ -56,13 +56,13 @@ namespace Oovning5b
             List<int> menuChoises = new List<int>() { 0, 1, 2 };
             //userInterface.PrintAddGarageName();
             string instructions = "The new garages name";
-            string garageName = userInterface.InputName(instructions);
+            string garageName = userInterface.InputSomething(instructions);
             int numberOfParkingSlots;
 
             if (garageName == "0") ManageGarageMenu();
             else
             {
-                numberOfParkingSlots = userInterface.InputNumberOfSpacesInNewGarage();
+                numberOfParkingSlots = userInterface.InputNumber("sdfsdf");
                 var garage = new Garage<Vehicle>(numberOfParkingSlots, garageName);
                 try
                 {
