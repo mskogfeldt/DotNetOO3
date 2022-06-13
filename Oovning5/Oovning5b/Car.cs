@@ -12,11 +12,13 @@ namespace Oovning5b
         public int Doors;
 
 
-        public Car(string color, int wheels, string garageName)
+        public Car(string registrationNumber, string color, int wheels, int doors)
         {
+            this.RegistrationNumber = registrationNumber;
             this.Color = color;
             this.Wheels = wheels;
-            this.GarageName = garageName;
+            this.Doors = doors;
+            
         }
       /*  public string RegistrationNumber { get; set; }
         public string Color { get; set; }

@@ -61,7 +61,7 @@ namespace Oovning5b
         public Car CreateCar()
         {
             bool correctLicensPlate = false;
-            string registrationNumber;
+            string registrationNumber = "";
             string color;
             string wheels;
             string doors;
@@ -84,8 +84,15 @@ namespace Oovning5b
             userInterface.Message(addWheels);
             int numberOfWheels = userInterface.InputNumber(addWheels);
 
+            string addDoors = "Please enter the number of doors";
+            int numberOfDoors = userInterface.InputNumber(addWheels);
 
+            Car car = new Car(registrationNumber, carsColor, numberOfWheels, numberOfDoors);
+            return car;
         }
+
+
+
 
 
     }

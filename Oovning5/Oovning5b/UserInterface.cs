@@ -16,8 +16,8 @@ namespace Oovning5b
         //1
         public void PrintMainMenu()
         {
-            Console.WriteLine("Press 1 to search Garage: ");
-            Console.WriteLine("Press 2 to search for Vehicle");
+            Console.WriteLine("Press 1 to manage Garage: ");
+            Console.WriteLine("Press 2 to manage Vehicle: ");
             // Console.WriteLine("Press 3 to add a new Garage: ");
             //Console.WriteLine("Press 4 to add a new Vehicle: ");
             Console.WriteLine("Press 0 to quit the app: ");
@@ -63,6 +63,11 @@ namespace Oovning5b
             Console.WriteLine("To add a Car Press 4");
             Console.WriteLine("To add a Motorcycle Press 5");
             Console.WriteLine("Press 0 to go to Manage Vehicle");
+        }
+
+        public void PrintIfAddGarageToNewWehicle()
+        {
+            Console.WriteLine("Press 1 to add a garage to vehicle");
         }
 
         //AddVehicleMenu
@@ -132,7 +137,7 @@ namespace Oovning5b
             string name = "";
             while (keepTyping)
             {
-                Console.WriteLine("Enter " + argument + " . At Least two chars long");
+                Console.WriteLine( argument + " . At Least two chars long");
                 Console.WriteLine("Enter 0 to go back");
                 name = Console.ReadLine();
                 if (name != null)
@@ -167,6 +172,7 @@ namespace Oovning5b
             Console.WriteLine("Sucess" + message);
         }
 
+        
         
     }
 }
