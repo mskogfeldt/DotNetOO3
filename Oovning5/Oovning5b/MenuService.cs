@@ -107,23 +107,53 @@ namespace Oovning5b
             }
         }
 
-        public void ParkVehicleMenu()
-        {
-            string instructionsRegNr = "Please enter registration number";
-            string instructionsGarageName = "Please enter the garage name";
-            string renNr = userInterface.InputSomething(instructionsRegNr);
-            if (numberPlateManager.numberPlates.ContainsKey(renNr))
-            {
-                Vehicle vehicle = numberPlateManager.numberPlates[renNr];
-                string
-            }
-
-        }
-
         public void UnparkVhicleMenu()
         {
-
+            Vehicle vehicle = SearchVehicleMenu();
+            garageService.UnParkVehicle(vehicle);
         }
+
+        public void ParkVehicleMenu()
+        {
+            Vehicle vehicle = SearchVehicleMenu();
+            var garage = SearchGarageMenu();
+            garageService.ParkVehicle(vehicle, garage);
+        }
+
+        public Vehicle SearchVehicleMenu()
+        {
+            bool keepTypingRegestrationNumber = true;
+            while (keepTypingRegestrationNumber)
+            {
+                string instructionsRegNr = "Please enter registration number";
+                string renNr = userInterface.InputSomething(instructionsRegNr);
+                if (numberPlateManager.numberPlates.ContainsKey(renNr))
+                {
+                    Vehicle vehicle = numberPlateManager.numberPlates[renNr];
+                    string vehicleFound = vehicle.RegistrationNumber + " is found";
+                }
+            }
+            return null;
+        }
+
+        public Garage<Vehicle> SearchGarageMenu()
+        {
+            bool keepTypingGarageName = true;
+            while (keepTypingGarageName)
+            {
+                string instructionsGarageName = "Please enter the garage name";
+                string garageName = userInterface.InputSomething(instructionsGarageName);
+                if (garageService.garages.ContainsKey(garageName))
+                {
+                    var garage = garageService.garages[garageName];
+                    string garageFound = garage.Name + " is found";
+                    return garage;
+                }
+            }
+            return null;
+        }
+
+        
         
     }
 }
