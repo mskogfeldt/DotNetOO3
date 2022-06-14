@@ -41,13 +41,13 @@ namespace Oovning5b
         public void ManageVehicleMenu()
         {
             //bool keepWorkin = true;
-            List<int> menuChoises = new List<int>() { 0, 1, 2 };
+            List<int> menuChoises = new List<int>() { 0, 1, 2, 3 };
             userInterface.PrintManageVehicleMenu();
             int input = userInterface.InputfromMenu(menuChoises);
             if (input == 0) MainMenu();
             else if (input == 1) AddVehicleTypeMenu();
-            else if (input == 2) ParkVehicleMenu();//// else if (input == 2) garageService.ParkVehicle() then ManageVehicleMenu()
-            //else if (input == 3) garageService.UnparkVehicle() then ManageVehicleMenu()
+            else if (input == 2) ParkVehicleMenu();
+            else if (input == 3) UnparkVhicleMenu();
             else ManageVehicleMenu();
         }
 
@@ -55,25 +55,26 @@ namespace Oovning5b
         {
             List<int> menuChoises = new List<int>() { 0, 1, 2 };
             //userInterface.PrintAddGarageName();
-            string instructions = "The new garages name";
+            string instructions = "Please input the new garages name";
             string garageName = userInterface.InputSomething(instructions);
             int numberOfParkingSlots;
 
             if (garageName == "0") ManageGarageMenu();
             else
             {
-                numberOfParkingSlots = userInterface.InputNumber("sdfsdf");
+                numberOfParkingSlots = userInterface.InputNumber("Please enget the number of parkingslots this fine esatblishment has to offer:");
                 var garage = new Garage<Vehicle>(numberOfParkingSlots, garageName);
                 try
                 {
                     garageService.garages.Add(garageName, garage);
-                    userInterface.Message("Garage added");
+                    userInterface.Message(garage.Name + " added");
                 }
                 catch
                 {
                     userInterface.Message("Your skilled coWorkers har already added said garage");
                 }
             }
+            MainMenu();
         }
 
         public void AddVehicleTypeMenu()
@@ -81,18 +82,41 @@ namespace Oovning5b
             userInterface.PrintAddVehicleType();
             List<int> possibleSellections = new List<int>() { 0, 1, 2, 3, 4, 5 };
             int menuSelection = userInterface.InputfromMenu(possibleSellections);
+            string optionQuestionmark = "What are you nuts, just buy a car instead, youll get a car";
             if (menuSelection == 0) ManageVehicleMenu();
-            else if (menuSelection == 1) ManageVehicleMenu();
-            // sfter adding calling methd AddVehicleTypeMenu again?
-            else if (menuSelection == 2) ManageVehicleMenu();
-            else if (menuSelection == 3) ManageVehicleMenu();
-            else if (menuSelection == 4) ManageVehicleMenu();
-            else if (menuSelection == 5) ManageVehicleMenu();
+            else if (menuSelection == 1) 
+            {
+                userInterface.Message(optionQuestionmark);
+                numberPlateManager.CreateCar();
+            } 
+            else if (menuSelection == 2)
+            {
+                userInterface.Message(optionQuestionmark);
+                numberPlateManager.CreateCar();
+            }
+            else if (menuSelection == 3)
+            {
+                userInterface.Message(optionQuestionmark);
+                numberPlateManager.CreateCar();
+            }
+            else if (menuSelection == 4) numberPlateManager.CreateCar();
+            else if (menuSelection == 5)
+            {
+                userInterface.Message(optionQuestionmark);
+                numberPlateManager.CreateCar();
+            }
         }
 
         public void ParkVehicleMenu()
         {
-
+            string instructionsRegNr = "Please enter registration number";
+            string instructionsGarageName = "Please enter the garage name";
+            string renNr = userInterface.InputSomething(instructionsRegNr);
+            if (numberPlateManager.numberPlates.ContainsKey(renNr))
+            {
+                Vehicle vehicle = numberPlateManager.numberPlates[renNr];
+                string
+            }
 
         }
 

@@ -36,7 +36,8 @@ namespace Oovning5b
         public void PrintManageVehicleMenu()
         {
             Console.WriteLine("Press 1 to add a new Vehicle: ");
-            Console.WriteLine("Press 2 to admin a Vehicle: ");
+            Console.WriteLine("Press 2 to park a Vehicle: ");
+            Console.WriteLine("Press 3 to unpark a Vehicle: ");
             Console.WriteLine("Press 0 to go to main menu: ");
         }
 
@@ -70,45 +71,36 @@ namespace Oovning5b
             Console.WriteLine("Press 1 to add a garage to vehicle");
         }
 
-        //AddVehicleMenu
-
-
-
-
-
-        /*Console.WriteLine("Press 1 to park a Vehicle: ");
-            Console.WriteLine("Press 2 to unpark a Vehicle: ");*/
-        // 1 PrintMainMenu
         public int InputfromMenu(List<int> possibleChoices)
         {
             bool keepTyping = true;
-            int returnvalue = 0;
             while (keepTyping)
             {
                 Console.WriteLine("Please navigate through the menu by inputting the number of your choice");
-                char input = ' '; //Creates the character input to be used with the switch-case below.
+                var input = ""; //Creates the character input to be used with the switch-case below.
                 try
                 {
-                    input = Console.ReadLine()![0]; //Tries to set input to the first char in an input line
+                    input = Console.ReadLine(); //Tries to set input to the first char in an input line
                 }
                 catch (IndexOutOfRangeException) //If the input line is empty, we ask the users for some input.
                 {
                     Console.Clear();
                     Console.WriteLine("Please enter some valid input!");
                 }
-                if (Char.IsNumber(input) && possibleChoices.Contains(input))
+                
+                if (Int32.TryParse(input, out int result) && possibleChoices.Contains(result))
                 {
-                    return input;
+                    return result;
+                }
+                else
+                {
+                    Console.WriteLine("Unvalid input");
                 }
             }
             return -1;
         }
 
-   /*     PrintAdminGarageMenu
-            PrintAdinVehicleMenu
-            PrintAddGarageNumberOfSpaces*/
-
-            //
+   
         public int InputNumber(string message)
         {
             bool keepTyping = true;
@@ -121,7 +113,6 @@ namespace Oovning5b
                 {
                     if (IsItAnInt(numb))
                     {
-                        // keepTyping = false;
                         return Int32.Parse(numb);
                     }
                 }
@@ -159,7 +150,6 @@ namespace Oovning5b
             {
                 return false;
             }
-            return false;
         }
 
         public void Message(string message)
