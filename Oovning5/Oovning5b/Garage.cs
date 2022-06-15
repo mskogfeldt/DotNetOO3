@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections;
 
 namespace Oovning5b
 {
-    
+
     internal class Garage<T> : IEnumerable<T> where T : Vehicle
     {
         //public  Enumerator  GetEnumerator();
@@ -34,12 +29,12 @@ namespace Oovning5b
                 string message = "Registration number " + vehicle.RegistrationNumber + " is now parked at" + this.Name;
                 userInterface.Message(message);
             }
-            else 
+            else
             {
                 string message = this.Name + " is full, keep driving";
                 userInterface.Message(message);
             }
-            
+
         }
 
         public void UnParkVehicle(T vehicle)
@@ -54,14 +49,17 @@ namespace Oovning5b
         public IEnumerator<T> GetEnumerator()
         {
             //Hanera vad som ska returneras
-            foreach(var v in parkedVehicles)
+            foreach (var v in parkedVehicles)
             {
                 //Validera att det finns ett faktiskst fordon på platsen
-                yield return v;
+                if (v is not null)
+                {
+                    yield return v;
+                }
             }
         }
 
         IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
-      
+
     }
 }
